@@ -93,7 +93,7 @@ def optimizecode():
         '''
     else:
         return '''
-        <h1>GPT Demo App</h1>
+        <h1>Generate Code-optimizing Suggestions</h1>
         Enter your query below
         <form method="post">
             <textarea name="prompt"></textarea>
@@ -104,7 +104,7 @@ def optimizecode():
 @app.route('/javadoc', methods=['GET', 'POST'])
 def javadoc():
 
-    added_prompt = "Creates javadocs for your java code:\n"
+    added_prompt = "Create java doc comments for this piece of java code:\n"
 
     ''' handle a get request by sending a form 
         and a post request by returning the GPT response
@@ -124,7 +124,7 @@ def javadoc():
         '''
     else:
         return '''
-        <h1>GPT Demo App</h1>
+        <h1>Create JavaDoc Comments from Code</h1>
         Enter your query below
         <form method="post">
             <textarea name="prompt"></textarea>
