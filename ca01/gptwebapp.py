@@ -18,12 +18,13 @@ On Windows:
 % $env:APIKEY="....." # in powershell
 % python gptwebapp.py
 '''
+
 from flask import request,redirect,url_for,Flask
 from gpt import GPT
 import os
 
 app = Flask(__name__)
-gptAPI = GPT(os.environ.get('APIKEY'))
+gptAPI = GPT(os.environ.get('API_KEY'))
 
 # Set the secret key to some random bytes. Keep this really secret!
 app.secret_key = b'_5#y2L"F4Q789789uioujkkljkl...8z\n\xec]/'
@@ -36,7 +37,6 @@ def index():
         <h1>GPT Demo</h1>
         <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
     '''
-
 
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():

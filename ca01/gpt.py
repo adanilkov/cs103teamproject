@@ -18,7 +18,11 @@ On Windows:
 % python gpt.py
 '''
 import openai
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
+API_KEY = os.getenv('API_KEY')
 
 class GPT():
     ''' make queries to gpt from a given API '''
@@ -26,7 +30,7 @@ class GPT():
         ''' store the apikey in an instance variable '''
         self.apikey=apikey
         # Set up the OpenAI API client
-        openai.api_key = apikey #os.environ.get('APIKEY')
+        openai.api_key = API_KEY #os.environ.get('APIKEY')
 
         # Set up the model and prompt
         self.model_engine = "text-davinci-003"
