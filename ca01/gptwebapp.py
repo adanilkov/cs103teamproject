@@ -27,7 +27,7 @@ app = Flask(__name__)
 gptAPI = GPT(os.environ.get('API_KEY'))
 
 # Set the secret key to some random bytes. Keep this really secret!
-app.secret_key = b'_5#y2L"F4Q789789uioujkkljkl...8z\n\xec]/'
+app.secret_key = os.environ.get('API_KEY')
 
 @app.route('/')
 def index():
@@ -36,6 +36,8 @@ def index():
     return f'''
         <h1>GPT Demo</h1>
         <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
+        <h1>Optimize Code</h1>
+        <a href="{url_for('optimizecode')}">Generate a List of Suggestions to Optimize Your Code</a>
     '''
 
 @app.route('/gptdemo', methods=['GET', 'POST'])
@@ -46,6 +48,37 @@ def gptdemo():
     if request.method == 'POST':
         prompt = request.form['prompt']
         answer = gptAPI.getResponse(prompt)
+        return f'''
+        <h1>GPT Demo</h1>
+        <pre style="bgcolor:yellow">{prompt}</pre>
+        <hr>
+        Here is the answer in text mode:
+        <div style="border:thin solid black">{answer}</div>
+        Here is the answer in "pre" mode:
+        <pre style="border:thin solid black">{answer}</pre>
+        <a href={url_for('gptdemo')}> make another query</a>
+        '''
+    else:
+        return '''
+        <h1>GPT Demo App</h1>
+        Enter your query below
+        <form method="post">
+            <textarea name="prompt"></textarea>
+            <p><input type=submit value="get response">
+        </form>
+        '''
+    
+@app.route('/optimizecode', methods=['GET', 'POST'])
+def optimizecode():
+
+    added_prompt = "Return a list of optimizations that could be made to the following piece of code:\n"
+
+    ''' handle a get request by sending a form 
+        and a post request by returning the GPT response
+    '''
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        answer = gptAPI.getResponse(added_prompt + prompt)
         return f'''
         <h1>GPT Demo</h1>
         <pre style="bgcolor:yellow">{prompt}</pre>
