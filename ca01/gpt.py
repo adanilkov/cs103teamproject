@@ -54,5 +54,5 @@ if __name__=='__main__':
     '''
     '''
     import os
-    g = GPT(os.environ.get("API_KEY"))
+    g = GPT(os.getenv('API_KEY'))
     print(g.getResponse("what does openai's GPT stand for?"))
