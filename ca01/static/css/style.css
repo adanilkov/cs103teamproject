@@ -48,7 +48,8 @@ h6 {
 
 /* link styles */
 a {
-  color: #91aebd;
+  color: #69ce8d;
+  text-decoration: none; /* remove the default underline */
 }
 
 a:hover {
