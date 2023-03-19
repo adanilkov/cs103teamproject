@@ -30,7 +30,7 @@ gptAPI = GPT(os.environ.get('API_KEY'))
 app.secret_key = b'_5#y2L"F4Q789369uioujkkljkl...8z\n\xec]/'
 
 @app.route('/')
-def home():
+def opticode():
     return render_template('opticode.html')
         
 @app.route('/about')
