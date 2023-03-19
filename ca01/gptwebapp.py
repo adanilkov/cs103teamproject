@@ -19,7 +19,7 @@ On Windows:
 % python gptwebapp.py
 '''
 
-from flask import request,redirect,url_for,Flask
+from flask import request,redirect,url_for,Flask,render_template
 from gpt import GPT
 import os
 
@@ -31,16 +31,8 @@ app.secret_key = b'_5#y2L"F4Q789369uioujkkljkl...8z\n\xec]/'
 
 @app.route('/')
 def home():
-    return f'''        
-        <nav>
-            <ul>
-                <li><a href='/about'>About</a></li>
-                <li><a href='/team'>Team</a></li>
-                <li><a href='/index'>Index</a></li>
-            </ul>
-        </nav>
-        '''
-
+    return render_template('opticode.html')
+        
 @app.route('/about')
 def about():
     return "About"

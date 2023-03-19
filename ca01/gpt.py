@@ -18,7 +18,6 @@ On Windows:
 % python gpt.py
 '''
 
-from flask import Flask
 import openai
 import os
 from dotenv import load_dotenv
