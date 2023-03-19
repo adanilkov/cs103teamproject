@@ -17,6 +17,8 @@ On Windows:
 % $env:APIKEY="....." # in powershell
 % python gpt.py
 '''
+
+from flask import Flask
 import openai
 import os
 from dotenv import load_dotenv
@@ -53,5 +55,5 @@ if __name__=='__main__':
     '''
     '''
     import os
-    g = GPT(os.environ.get("APIKEY"))
+    g = GPT(os.environ.get("API_KEY"))
     print(g.getResponse("what does openai's GPT stand for?"))

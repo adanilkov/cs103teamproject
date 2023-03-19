@@ -27,9 +27,29 @@ app = Flask(__name__)
 gptAPI = GPT(os.environ.get('API_KEY'))
 
 # Set the secret key to some random bytes. Keep this really secret!
-app.secret_key = os.environ.get('API_KEY')
+app.secret_key = b'_5#y2L"F4Q789369uioujkkljkl...8z\n\xec]/'
 
 @app.route('/')
+def home():
+    return f'''        
+        <nav>
+            <ul>
+                <li><a href='/about'>About</a></li>
+                <li><a href='/team'>Team</a></li>
+                <li><a href='/index'>Index</a></li>
+            </ul>
+        </nav>
+        '''
+
+@app.route('/about')
+def about():
+    return "About"
+
+@app.route('/team')
+def team(): 
+    return "Team"
+
+@app.route('/index')
 def index():
     ''' display a link to the general query page '''
     print('processing / route')
@@ -42,8 +62,6 @@ def index():
         <a href="{url_for('javadoc')}">Generate JavaDocs for Your Java Code</a>
         <h1>Big-O Analysis</h1>
         <a href="{url_for('bigOanalysis')}">Generate a Line-by-Line Big-O Analysis of your Code</a>
-       
-
     '''
 
 @app.route('/gptdemo', methods=['GET', 'POST'])
