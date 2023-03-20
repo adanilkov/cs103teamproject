@@ -19,7 +19,7 @@ On Windows:
 % python gptwebapp.py
 '''
 
-from flask import request,redirect,url_for,Flask
+from flask import request,redirect,url_for,Flask,render_template
 from gpt import GPT
 import os
 
@@ -27,9 +27,21 @@ app = Flask(__name__)
 gptAPI = GPT(os.environ.get('API_KEY'))
 
 # Set the secret key to some random bytes. Keep this really secret!
-app.secret_key = os.environ.get('API_KEY')
+app.secret_key = b'_5#y2L"F4Q789369uioujkkljkl...8z\n\xec]/'
 
 @app.route('/')
+def opticode():
+    return render_template('codecraft.html')
+        
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/team')
+def team(): 
+    return render_template('team.html')
+
+@app.route('/index')
 def index():
     ''' display a link to the general query page '''
     print('processing / route')
@@ -40,6 +52,8 @@ def index():
         <a href="{url_for('optimizecode')}">Generate a List of Suggestions to Optimize Your Code</a>
         <h1>Generate Java Docs</h1>
         <a href="{url_for('javadoc')}">Generate JavaDocs for Your Java Code</a>
+        <h1>Big-O Analysis</h1>
+        <a href="{url_for('bigOanalysis')}">Generate a Line-by-Line Big-O Analysis of your Code</a>
     '''
 
 @app.route('/team')
@@ -151,6 +165,40 @@ def javadoc():
         </form>
         '''
 
+@app.route('/bigOanalysis', methods=['GET', 'POST'])
+def bigOanalysis():
+
+    added_prompt = """Perform a line-by-line Big-O runtime analysis for the provided code below.
+    For example, let's say I have a for loop that runs n times, and in the loop, I have a line that runs in constant time. 
+    The answer I am expecting is: "The first line runs in a for loop, and it runs in O(n) time. The second line runs in O(1) time. 
+    Because the second line is a statement in the for loop, the program run in O(n) time."\nCode: """
+
+    ''' handle a get request by sending a form 
+        and a post request by returning the GPT response
+    '''
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        answer = gptAPI.getResponse(added_prompt + prompt)
+        return f'''
+        <h1>GPT Demo</h1>
+        <pre style="bgcolor:yellow">{prompt}</pre>
+        <hr>
+        Here is the answer in text mode:
+        <div style="border:thin solid black">{answer}</div>
+        Here is the answer in "pre" mode:
+        <pre style="border:thin solid black">{answer}</pre>
+        <a href={url_for('gptdemo')}> make another query</a>
+        '''
+    else:
+        return '''
+        <h1>Generate Code-optimizing Suggestions</h1>
+        Enter your query below
+        <form method="post">
+            <textarea name="prompt"></textarea>
+            <p><input type=submit value="get response">
+        </form>
+        '''
+    
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(
     app.run(debug=True,port=5001)
