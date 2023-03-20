@@ -31,7 +31,7 @@ app.secret_key = b'_5#y2L"F4Q789369uioujkkljkl...8z\n\xec]/'
 
 @app.route('/')
 def opticode():
-    return render_template('codecraft.html')
+    return render_template('index.html')
         
 @app.route('/about')
 def about():
@@ -91,14 +91,7 @@ def optimizecode():
         <a href={url_for('gptdemo')}> make another query</a>
         '''
     else:
-        return '''
-        <h1>Generate Code-optimizing Suggestions</h1>
-        Enter your query below
-        <form method="post">
-            <textarea name="prompt"></textarea>
-            <p><input type=submit value="get response">
-        </form>
-        '''
+        return render_template('optimizecode.html', prompt='', answer='') 
     
 @app.route('/javadoc', methods=['GET', 'POST'])
 def javadoc():
@@ -122,14 +115,7 @@ def javadoc():
         <a href={url_for('gptdemo')}> make another query</a>
         '''
     else:
-        return '''
-        <h1>Create JavaDoc Comments from Code</h1>
-        Enter your query below
-        <form method="post">
-            <textarea name="prompt"></textarea>
-            <p><input type=submit value="get response">
-        </form>
-        '''
+        return render_template('javadoc.html', prompt='', answer='') 
 
 @app.route('/bigOanalysis', methods=['GET', 'POST'])
 def bigOanalysis():
@@ -145,17 +131,6 @@ def bigOanalysis():
 
     return render_template('bigO.html', prompt='', answer='') 
 
-        # f'''
-        # <h1>GPT Demo</h1>
-        # <pre style="bgcolor:yellow">{prompt}</pre>
-        # <hr>
-        # Here is the answer in text mode:
-        # <div style="border:thin solid black">{answer}</div>
-        # Here is the answer in "pre" mode:
-        # <pre style="border:thin solid black">{answer}</pre>
-        # <a href={url_for('gptdemo')}> make another query</a>
-        # '''
-    
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(
     app.run(debug=True,port=5001)
