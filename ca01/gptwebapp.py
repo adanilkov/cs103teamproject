@@ -171,7 +171,7 @@ def bigOanalysis():
         '''
     else:
         return '''
-        <h1>Generate Code-optimizing Suggestions</h1>
+        <h1>Generate Big-O Runtime Analysis</h1>
         Enter your query below
         <form method="post">
             <textarea name="prompt"></textarea>
