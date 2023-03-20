@@ -93,4 +93,13 @@ nav ul li a:hover {
     font-size: 18px;
     margin-top: 10px;
   }
+
+  a {
+    color: #69ce8d;
+    text-decoration: none; /* remove the default underline */
+  }
+  
+  a:hover {
+    color: #6bfcb8;
+  }
   
