@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Optimize Code</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/terminal.css">
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <div class="logo">
+        <a href="/">CodeCraft</a>
+        </div>
+        <ul class="nav-links">
+        <li><a href="/about">About</a></li>
+        <li><a href="/team">Team</a></li>
+        <li><a href="/">Index</a></li>
+        </ul>
+        <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        </div>
+    </div>
+    </nav>
+      <h1>Optimize Code</h1>
+        </div>
+        <div class="terminal-body">
+        {% if code %}
+        <div class="user-code">
+            <h4>Input Code:</h4>
+            <pre><code>{{ code }}</code></pre>
+        </div>
+        {% endif %}
+        <form method="POST" action="{{ url_for('bigOanalysis') }}">
+            <label for="prompt">Code:</label><br>
+            <textarea id="prompt" name="prompt" rows="10">{{ code }}</textarea><br><br>
+            <input type="submit" value="Analyze">
+        </form>
+        {% if answer %}
+        <div class="analysis">
+            <h4>Output Analysis:</h4>
+            <textarea id="answer" name="answer" rows="10">{{ answer }}</textarea><br><br>
+        </div>
+        {% endif %}
+        {% if code and not answer %}
+        <div class="user-code">
+            <h4>Your Code:</h4>
+            <pre><code>{{ code }}</code></pre>
+        </div>
+        {% endif %}
+        </div>
+    </div>
+</body>
+</html>
