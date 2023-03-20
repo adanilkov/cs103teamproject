@@ -24,7 +24,7 @@
         </div>
       </div>
       </nav>
-    <h1>Big-O Analysis</h1>
+    <h1>JavaDoc Creation</h1>
     <form action="{{ url_for('javadoc') }}" method="POST">
       <label for="code-input">Code:</label>
       <br>
@@ -34,7 +34,7 @@
     </form>
     <div class="output-container">
       {% if answer %}
-        <h3>Analysis:</h3>
+        <h3>JavaDocs:</h3>
         <p>{{ answer }}</p>
       {% endif %}
     </div>
