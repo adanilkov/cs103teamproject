@@ -47,6 +47,7 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    text-align: center;
   }
   
   label {
@@ -66,7 +67,6 @@ nav ul li a:hover {
     line-height: 1.5;
     padding: 10px;
     resize: none;
-    text-align: center;
   }
   
   input[type="submit"] {
