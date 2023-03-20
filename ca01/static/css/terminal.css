@@ -66,6 +66,7 @@ nav ul li a:hover {
     line-height: 1.5;
     padding: 10px;
     resize: none;
+    text-align: center;
   }
   
   input[type="submit"] {
@@ -78,6 +79,7 @@ nav ul li a:hover {
     font-weight: bold;
     padding: 10px 20px;
     text-transform: uppercase;
+    text-align: center;
   }
   
   input[type="submit"]:hover {
