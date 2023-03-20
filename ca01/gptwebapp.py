@@ -30,8 +30,8 @@ gptAPI = GPT(os.environ.get('API_KEY'))
 app.secret_key = b'_5#y2L"F4Q789369uioujkkljkl...8z\n\xec]/'
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def opticode():
+    return render_template('codecraft.html')
         
 @app.route('/about')
 def about():
@@ -41,20 +41,6 @@ def about():
 def team(): 
     return render_template('team.html')
 
-# @app.route('/index')
-# def index():
-#     ''' display a link to the general query page '''
-#     print('processing / route')
-#     return f'''
-#         <h1>GPT Demo</h1>
-#         <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
-#         <h1>Optimize Code</h1>
-#         <a href="{url_for('optimizecode')}">Generate a List of Suggestions to Optimize Your Code</a>
-#         <h1>Generate Java Docs</h1>
-#         <a href="{url_for('javadoc')}">Generate JavaDocs for Your Java Code</a>
-#         <h1>Big-O Analysis</h1>
-#         <a href="{url_for('bigOanalysis')}">Generate a Line-by-Line Big-O Analysis of your Code</a>
-#     '''
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():
     ''' handle a get request by sending a form 
