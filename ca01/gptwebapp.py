@@ -77,11 +77,13 @@ def optimizecode():
     ''' handle a get request by sending a form 
         and a post request by returning the GPT response
     '''
+    prompt = ""
+
     if request.method == 'POST':
         prompt = request.form['prompt']
         answer = gptAPI.getResponse(added_prompt + prompt)
         return render_template('optimizecode.html', prompt=prompt, answer=answer)
-    return render_template('optimizecode.html', prompt='', answer='')
+    return render_template('optimizecode.html', prompt=prompt, answer='')
     
 @app.route('/javadoc', methods=['GET', 'POST'])
 def javadoc():
@@ -91,11 +93,13 @@ def javadoc():
     ''' handle a get request by sending a form 
         and a post request by returning the GPT response
     '''
+    prompt = ""
+
     if request.method == 'POST':
         prompt = request.form['prompt']
         answer = gptAPI.getResponse(added_prompt + prompt)
         return render_template('javadoc.html', prompt=prompt, answer=answer) 
-    return render_template('javadoc.html', prompt='', answer='') 
+    return render_template('javadoc.html', prompt=prompt, answer='') 
 
 @app.route('/bigO', methods=['GET', 'POST'])
 def bigOanalysis():
@@ -104,15 +108,15 @@ def bigOanalysis():
     The answer I am expecting is: "The first line runs in a for loop, and it runs in O(n) time. The second line runs in O(1) time. 
     Because the second line is a statement in the for loop, the program run in O(n) time."\nCode: """
 
-    temp = ""
+    prompt = ""
 
     if request.method == 'POST':
         prompt = request.form['prompt']
         temp = prompt
         answer = gptAPI.getResponse(added_prompt + prompt)
-        return render_template('bigO.html', prompt=temp, answer=answer)
+        return render_template('bigO.html', prompt=prompt, answer=answer)
 
-    return render_template('bigO.html', prompt=temp, answer='') 
+    return render_template('bigO.html', prompt=prompt, answer='') 
 
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(
