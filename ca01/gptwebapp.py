@@ -26,9 +26,6 @@ import os
 app = Flask(__name__)
 gptAPI = GPT(os.environ.get('API_KEY'))
 
-# Set the secret key to some random bytes. Keep this really secret!
-app.secret_key = b'_5#y2L"F4Q789369uioujkkljkl...8z\n\xec]/'
-
 @app.route('/')
 def opticode():
     return render_template('index.html')

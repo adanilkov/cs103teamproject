@@ -33,7 +33,7 @@
             <pre><code>{{ code }}</code></pre>
         </div>
         {% endif %}
-        <form method="POST" action="{{ url_for('bigOanalysis') }}">
+        <form method="POST" action="{{ url_for('optimizecode') }}">
             <label for="prompt">Code:</label><br>
             <textarea id="prompt" name="prompt" rows="10">{{ code }}</textarea><br><br>
             <input type="submit" value="Analyze">
