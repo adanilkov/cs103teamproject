@@ -50,10 +50,16 @@ class GPT():
         response = completion.choices[0].text
         return response
 
+def getJavaDocs(inp):
+    g = GPT(os.getenv('API_KEY'))
+    query = 'Java docs are commented documentation before a method. Given the following method create javaDocs for it, only return the javaDocs and no other text:\n'
+    res = g.getResponse(inp)
+    return res
+
 if __name__=='__main__':
     '''
     '''
-    import os
-    g = GPT(os.getenv('API_KEY'))
-    print(g.getResponse("what does openai's GPT stand for?"))
+    # g = GPT(os.getenv('API_KEY'))
+    # print(g.getResponse("what does openai's GPT stand for?"))
+    print(getJavaDocs('public void addStation(Station s) { \n    railway.insert(s);\n    stationNames[stationCount] = s.stationName();\n    stationCount++;\n}'))
     
