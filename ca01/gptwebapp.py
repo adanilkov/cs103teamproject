@@ -86,7 +86,7 @@ def bigOanalysis():
         prompt = request.form['prompt']
         temp = prompt
         answer = gptAPI.getResponse(added_prompt + prompt)
-        return render_template('bigO.html', prompt=prompt, answer=answer)
+        return render_template('bigO.html', prompt=temp, answer=answer)
 
     return render_template('bigO.html', prompt=prompt, answer='') 
 
