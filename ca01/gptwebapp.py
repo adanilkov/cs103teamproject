@@ -80,18 +80,8 @@ def optimizecode():
     if request.method == 'POST':
         prompt = request.form['prompt']
         answer = gptAPI.getResponse(added_prompt + prompt)
-        return f'''
-        <h1>GPT Demo</h1>
-        <pre style="bgcolor:yellow">{prompt}</pre>
-        <hr>
-        Here is the answer in text mode:
-        <div style="border:thin solid black">{answer}</div>
-        Here is the answer in "pre" mode:
-        <pre style="border:thin solid black">{answer}</pre>
-        <a href={url_for('gptdemo')}> make another query</a>
-        '''
-    else:
-        return render_template('optimizecode.html', prompt='', answer='') 
+        return render_template('optimizecode.html', prompt=prompt, answer=answer)
+    return render_template('optimizecode.html', prompt='', answer='')
     
 @app.route('/javadoc', methods=['GET', 'POST'])
 def javadoc():
@@ -104,18 +94,8 @@ def javadoc():
     if request.method == 'POST':
         prompt = request.form['prompt']
         answer = gptAPI.getResponse(added_prompt + prompt)
-        return f'''
-        <h1>GPT Demo</h1>
-        <pre style="bgcolor:yellow">{prompt}</pre>
-        <hr>
-        Here is the answer in text mode:
-        <div style="border:thin solid black">{answer}</div>
-        Here is the answer in "pre" mode:
-        <pre style="border:thin solid black">{answer}</pre>
-        <a href={url_for('gptdemo')}> make another query</a>
-        '''
-    else:
-        return render_template('javadoc.html', prompt='', answer='') 
+        return render_template('javadoc.html', prompt=prompt, answer=answer) 
+    return render_template('javadoc.html', prompt='', answer='') 
 
 @app.route('/bigO', methods=['GET', 'POST'])
 def bigOanalysis():

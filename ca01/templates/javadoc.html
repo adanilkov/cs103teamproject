@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Big-O Analysis</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/terminal.css">
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <div class="logo">
+        <a href="/">CodeCraft</a>
+        </div>
+        <ul class="nav-links">
+        <li><a href="/about">About</a></li>
+        <li><a href="/team">Team</a></li>
+        <li><a href="/">Index</a></li>
+        </ul>
+        <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        </div>
+      </div>
+      </nav>
+    <h1>Big-O Analysis</h1>
+    <form action="{{ url_for('javadoc') }}" method="POST">
+      <label for="code-input">Code:</label>
+      <br>
+      <textarea id="code-input" name="prompt" rows="10" cols="50"></textarea>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <div class="output-container">
+      {% if answer %}
+        <h3>Analysis:</h3>
+        <p>{{ answer }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
