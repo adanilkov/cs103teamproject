@@ -22,21 +22,35 @@
         <div class="line2"></div>
         <div class="line3"></div>
         </div>
-      </div>
-      </nav>
-    <h1>JavaDoc Creation</h1>
-    <form action="{{ url_for('javadoc') }}" method="POST">
-      <label for="code-input">Code:</label>
-      <br>
-      <textarea id="code-input" name="prompt" rows="10" cols="50"></textarea>
-      <br>
-      <input type="submit" value="Submit">
-    </form>
-    <div class="output-container">
-      {% if answer %}
-        <h3>JavaDocs:</h3>
-        <p>{{ answer }}</p>
-      {% endif %}
     </div>
-  </body>
+    </nav>
+      <h1>JavaDocs:</h1>
+        </div>
+        <div class="terminal-body">
+        {% if code %}
+        <div class="user-code">
+            <h4>Input Code:</h4>
+            <pre><code>{{ code }}</code></pre>
+        </div>
+        {% endif %}
+        <form method="POST" action="{{ url_for('javadoc') }}">
+            <label for="prompt">Code:</label><br>
+            <textarea id="prompt" name="prompt" rows="10">{{ code }}</textarea><br><br>
+            <input type="submit" value="Analyze">
+        </form>
+        {% if answer %}
+        <div class="analysis">
+            <h4>JavaDocs:</h4>
+            <textarea id="answer" name="answer" rows="10">{{ answer }}</textarea><br><br>
+        </div>
+        {% endif %}
+        {% if code and not answer %}
+        <div class="user-code">
+            <h4>Your Code:</h4>
+            <pre><code>{{ code }}</code></pre>
+        </div>
+        {% endif %}
+        </div>
+    </div>
+</body>
 </html>
