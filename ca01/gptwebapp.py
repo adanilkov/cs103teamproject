@@ -31,7 +31,7 @@ app.secret_key = b'_5#y2L"F4Q789369uioujkkljkl...8z\n\xec]/'
 
 @app.route('/')
 def opticode():
-    return render_template('codecraft.html')
+    return render_template('index.html')
         
 @app.route('/about')
 def about():
