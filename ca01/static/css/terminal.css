@@ -110,7 +110,8 @@ nav ul li a:hover {
   
   /* center*/
   .terminal-body {
-    display: flex;
-    justify-content: center;
+    width: 90%;
+    padding: 10px;
     color: green;
+    margin: auto;
 }
