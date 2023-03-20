@@ -55,26 +55,6 @@ def index():
         <h1>Big-O Analysis</h1>
         <a href="{url_for('bigOanalysis')}">Generate a Line-by-Line Big-O Analysis of your Code</a>
     '''
-
-@app.route('/team')
-def team():
-    ''' display a link to the general query page '''
-    print('processing / route')
-    return f'''
-        <h1>Meet the Team!</h1>
-        <h2>Nathan Subrahmanian</h2>
-        <p> My name is Nathan, and I am a current sophomore majoring in Computer Science and 
-        Business. I have lived in Maryland and New Hampshire, but currently live in Illinois.
-        For this project, I implemented the optimize code method and worked with the rest of
-        our team to implement the other functionality of our site.</p>
-
-        <h2>Alex Danilkovas</h2>
-        <p></p>
-
-        <h2>Marsyl Viernes</h2>
-        <p></p>
-    '''
-
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():
     ''' handle a get request by sending a form 
