@@ -58,6 +58,8 @@ nav ul li a:hover {
   textarea {
     background-color: #1b1b1b;
     border: none;
+    width: 100%;
+    max-width: 100%;
     color: #d4d4d4;
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
