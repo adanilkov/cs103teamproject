@@ -54,6 +54,7 @@ nav ul li a:hover {
     color: #d4d4d4;
     font-size: 18px;
     margin-bottom: 10px;
+    text-align: left;
   }
   
   textarea {
