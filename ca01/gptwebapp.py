@@ -117,19 +117,22 @@ def javadoc():
     else:
         return render_template('javadoc.html', prompt='', answer='') 
 
-@app.route('/bigOanalysis', methods=['GET', 'POST'])
+@app.route('/bigO', methods=['GET', 'POST'])
 def bigOanalysis():
     added_prompt = """Perform a line-by-line Big-O runtime analysis for the provided code below.
     For example, let's say I have a for loop that runs n times, and in the loop, I have a line that runs in constant time. 
     The answer I am expecting is: "The first line runs in a for loop, and it runs in O(n) time. The second line runs in O(1) time. 
     Because the second line is a statement in the for loop, the program run in O(n) time."\nCode: """
 
+    temp = ""
+
     if request.method == 'POST':
         prompt = request.form['prompt']
+        temp = prompt
         answer = gptAPI.getResponse(added_prompt + prompt)
-        return render_template('bigO.html', prompt=prompt, answer=answer)
+        return render_template('bigO.html', prompt=temp, answer=answer)
 
-    return render_template('bigO.html', prompt='', answer='') 
+    return render_template('bigO.html', prompt=temp, answer='') 
 
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(
