@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Big-O Analysis</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/terminal.css">
+  </head>
+  <body>
+    <h1>Big-O Analysis</h1>
+    <form action="{{ url_for('bigOanalysis') }}" method="POST">
+      <label for="code-input">Code:</label>
+      <br>
+      <textarea id="code-input" name="prompt" rows="10" cols="50"></textarea>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <div class="output-container">
+      {% if answer %}
+        <h3>Analysis:</h3>
+        <p>{{ answer }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
