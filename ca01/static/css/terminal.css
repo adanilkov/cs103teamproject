@@ -108,3 +108,9 @@ nav ul li a:hover {
     color: #6bfcb8;
   }
   
+  /* center*/
+  .terminal-body {
+    display: flex;
+    justify-content: center;
+    color: green;
+}
